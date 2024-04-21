@@ -1,6 +1,7 @@
 # Bandit Typer
+<img src="https://github.com/peicasey/bandit-typer/assets/91210043/d7c14afc-4d38-4f16-960d-e7f6e3090f44" width="200px"></img>
 
-An app to help users with a limited range of motion get the best typing experience! 
+An app to help users with a limited range of motion get the best typing experience! Takes in user input of sampled typing range and commonly used characters to find the optimal layout. Currently supports English only.
 
 Final project for Texas A&M's Human-Computer Interaction course (CSCE 432) by Group 2. 
 
@@ -33,7 +34,7 @@ Just stuff we'll prob have to read through the documentation for.
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) for more examples, etc.
 
 **Node.js**
 - [Node.js Download](https://nodejs.org/en/download/current)
