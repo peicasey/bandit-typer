@@ -1,17 +1,22 @@
+# Bandit Typer
+
+An app to help users with a limited range of motion get the best typing experience! 
+
+Final project for Texas A&M's Human-Computer Interaction course (CSCE 432) by Group 2. 
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
+
+If this is the first time you have cloned the repo, run:
+```bash
+npm i
+```
 
 First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -20,17 +25,29 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Relevant Tech
 
-To learn more about Next.js, take a look at the following resources:
+Just stuff we'll prob have to read through the documentation for. 
 
+**Next.js (React Framework)**
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+**Node.js**
+- [Node.js Download](https://nodejs.org/en/download/current)
+- [Node.js Docs](https://nodejs.org/docs/latest/api/)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**simple-keyboard**
+- [simple-keyboard page](https://hodgef.com/simple-keyboard/getting-started/react/)
+- [example helpful for figuring out heatmap](https://hodgef.com/simple-keyboard/editor/?d=hodgef/react-simple-keyboard-demos/tree/uc-customization)
+- [customizing displayed layout](https://hodgef.com/simple-keyboard/documentation/options/layout/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**CSS stuff**
+- [shad/cn ui](https://ui.shadcn.com/docs) - CSS components
+- [Tailwind CSS](https://tailwindcss.com/docs/installation) - inline CSS styling
+
+**Keyboard Rearranging**
+- [Keyboards Github](https://github.com/AtomicFrontierCode/keyboards)
+
