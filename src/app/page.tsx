@@ -25,7 +25,7 @@ export default function Home() {
       </div>
       
 
-      <h2 className="text-3xl font-bold" style={poppins.style}>Introduction and motivation</h2>
+      <h2 className="text-3xl font-bold" style={poppins.style}>Introduction and Motivation</h2>
       <p>
         We wanted to help users navigate the situational inaccessibility that arises when 
         a user has a limited range of motion that usual. For instance, when you can only 
