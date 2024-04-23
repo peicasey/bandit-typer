@@ -58,6 +58,10 @@ class Rearranger {
 
     const freq = new Map();
 
+    for (let char of this.getOrderedListOfChars()) {
+        freq.set(char, 0);
+    }
+
     for (let char of keymashString.toUpperCase()) {
         freq.set(char, (freq.get(char) || 0) + 1);
     }
@@ -88,5 +92,37 @@ class Rearranger {
   
   }
 
-}
+  getRearrangedLayout(keymashString: String) {
 
+    keymashString = keymashString.replace(/[^A-Za-z]/g, '')
+
+    let positionsToChars = this.rearrange(keymashString);
+
+    type Position = { row: number; col: number };
+
+    function row(map: Map<Position, string>, rowIndex: number): string {
+
+      const filteredPositions = Array.from(map.entries())
+          .filter(([key, value]) => key.row === rowIndex)
+          .map(([key, value]) => ({ col: key.col, char: value }));
+
+      filteredPositions.sort((a, b) => a.col - b.col);
+
+      const chars = filteredPositions.map(position => position.char);
+
+      return chars.join(' ');
+    }
+
+    let rearrangedLayout = [
+      '` 1 2 3 4 5 6 7 8 9 0 - = {bksp}',
+      ('{tab} ' + row(positionsToChars, 2) + ' [ ] \\'),
+      ('{lock} ' + row(positionsToChars, 1) + ' ; \' {enter}'),
+      ('{shift} ' + row(positionsToChars, 0) + ' , . / {shift}'),
+      '.com @ {space}'
+    ]
+
+    return rearrangedLayout;
+
+  }
+
+}
