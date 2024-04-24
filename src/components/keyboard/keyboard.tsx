@@ -1,29 +1,35 @@
-import React, { FunctionComponent, useState, useRef, ChangeEvent } from "react";
+import React, { useRef, ChangeEvent, Dispatch, SetStateAction  } from "react";
 import KeyboardWrapper from "./keyboardWrapper";
 
-const Keyboard: FunctionComponent = () => {
-  const [input, setInput] = useState("");
+interface KeyboardProps {
+  input: string;
+  setInput: Dispatch<SetStateAction<string>>;
+}
+
+export default function Keyboard ( props: KeyboardProps ) {
   const keyboardRef = useRef<any>(null); 
 
   const onChangeInput = (event: ChangeEvent<HTMLInputElement>): void => {
     const input = event.target.value;
-    setInput(input);
+    props.setInput(input);
     keyboardRef.current.setInput(input); 
   };
 
   return (
-    <div>
-      <input
-        value={input}
-        placeholder={"Tap on the virtual keyboard to start"}
-        onChange={e => onChangeInput(e)}
-      />
-      <KeyboardWrapper keyboardRef={keyboardRef} onChange={setInput} /> {/* Change here */}
+    <div className="flex flex-col gap-2">
+      <div className="w-full">
+        <textarea
+          value={props.input}
+          placeholder={"Tap on the virtual keyboard to start"}
+          onChange={e => onChangeInput(e)}
+          className="resize w-full"
+        />
+      </div>
+      
+      <KeyboardWrapper keyboardRef={keyboardRef} onChange={props.setInput} /> {/* Change here */}
     </div>
   );
 };
-
-export default Keyboard;
 
 // NOTE TO SELF: for heatmap check out https://hodgef.com/simple-keyboard/editor/?d=hodgef/react-simple-keyboard-demos/tree/uc-customization
 // NOTE TO SELF: for customization check out https://hodgef.com/simple-keyboard/documentation/options/layout/
