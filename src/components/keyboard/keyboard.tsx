@@ -9,7 +9,7 @@ interface KeyboardProps {
 export default function Keyboard ( props: KeyboardProps ) {
   const keyboardRef = useRef<any>(null); 
 
-  const onChangeInput = (event: ChangeEvent<HTMLInputElement>): void => {
+  const onChangeInput = (event: ChangeEvent<HTMLTextAreaElement>): void => {
     const input = event.target.value;
     props.setInput(input);
     keyboardRef.current.setInput(input); 
