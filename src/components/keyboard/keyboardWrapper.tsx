@@ -1,3 +1,4 @@
+import { Rearranger } from "@/Rearranger";
 import React, { FunctionComponent, useState, MutableRefObject } from "react";
 import Keyboard from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
@@ -22,7 +23,8 @@ const KeyboardWrapper: FunctionComponent<IProps> = ({
   return (
     <Keyboard
       keyboardRef={r => (keyboardRef.current = r)}
-      layoutName={layoutName}
+      layout={{'custom': (new Rearranger()).getRearrangedLayout("zzzzzzzzzzzzzzzzzzzoommmmmmmmmmmmmm")}} // example, dummy string for testing
+      layoutName={'custom'}
       onChange={onChange}
       onKeyPress={onKeyPress}
       onRender={() => console.log("Rendered Keyboard :)")}

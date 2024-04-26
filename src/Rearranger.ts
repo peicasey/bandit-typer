@@ -19,7 +19,7 @@ Ex: R in querty is (2, 3), X is (0, 1).
 calling rearrange() will rewrite the map object, and then you can just redisplay the keyboard however that works
 */
 
-class Rearranger {
+export class Rearranger {
 
   private qwertyPositions = new Map([
     ['Q', {row: 2, col: 0}],
@@ -54,7 +54,7 @@ class Rearranger {
     return ['E', 'A', 'R', 'I', 'O', 'T', 'N', 'S', 'L', 'C', 'U', 'D', 'P', 'M', 'H', 'G', 'B', 'F', 'Y', 'W', 'K', 'V', 'X', 'Z', 'J', 'Q'];
   }
   
-  private getOrderedListOfKeyPositions(keymashString: String) {
+  getOrderedListOfKeyPositions(keymashString: String) {
 
     const freq = new Map();
 
@@ -75,7 +75,7 @@ class Rearranger {
     return positions;
   }
   
-  rearrange(keymashString: String) {
+  private rearrange(keymashString: String) {
     // returns a Map of positions to chars
   
     let charsByUsage = this.getOrderedListOfChars();
