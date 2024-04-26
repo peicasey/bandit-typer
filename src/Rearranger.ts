@@ -21,6 +21,66 @@ calling rearrange() will rewrite the map object, and then you can just redisplay
 
 export class Rearranger {
 
+  keyFrequencies: Map<string, number> = new Map();
+
+  constructor(keymashString: string) {
+    // initialize keyFrequencies
+    
+    keymashString = keymashString.replace(/[^A-Za-z]/g, '')
+
+    for (let char of this.getOrderedListOfChars()) { // basically, we're smoothing the values by pretending each letter gets used at least once
+        this.keyFrequencies.set(char, 1);
+    }
+
+    for (let char of keymashString.toUpperCase()) {
+        this.keyFrequencies.set(char, (this.keyFrequencies.get(char) || 0) + 1);
+    }
+
+    // normalize
+
+    let n = keymashString.length;
+
+    this.keyFrequencies.forEach((value, key) => {
+      this.keyFrequencies.set(key,  value / (n + 26)); // divide by n+26 because of smoothing (above)
+    });
+
+  }
+
+  getKeyFrequencies() {
+    return this.keyFrequencies;
+  }
+
+  getRearrangedLayout() {
+
+    let positionsToChars = this.rearrange();
+
+    type Position = { row: number; col: number };
+
+    function row(map: Map<Position, string>, rowIndex: number): string {
+
+      const filteredPositions = Array.from(map.entries())
+          .filter(([key, value]) => key.row === rowIndex)
+          .map(([key, value]) => ({ col: key.col, char: value }));
+
+      filteredPositions.sort((a, b) => a.col - b.col);
+
+      const chars = filteredPositions.map(position => position.char);
+
+      return chars.join(' ');
+    }
+
+    let rearrangedLayout = [
+      '` 1 2 3 4 5 6 7 8 9 0 - = {bksp}',
+      ('{tab} ' + row(positionsToChars, 2) + ' [ ] \\'),
+      ('{lock} ' + row(positionsToChars, 1) + ' ; \' {enter}'),
+      ('{shift} ' + row(positionsToChars, 0) + ' , . / {shift}'),
+      '.com @ {space}'
+    ]
+
+    return rearrangedLayout;
+
+  }
+
   private qwertyPositions = new Map([
     ['Q', {row: 2, col: 0}],
     ['W', {row: 2, col: 1}],
@@ -54,19 +114,9 @@ export class Rearranger {
     return ['E', 'A', 'R', 'I', 'O', 'T', 'N', 'S', 'L', 'C', 'U', 'D', 'P', 'M', 'H', 'G', 'B', 'F', 'Y', 'W', 'K', 'V', 'X', 'Z', 'J', 'Q'];
   }
   
-  getOrderedListOfKeyPositions(keymashString: String) {
+  private getOrderedListOfKeyPositions() {
 
-    const freq = new Map();
-
-    for (let char of this.getOrderedListOfChars()) {
-        freq.set(char, 0);
-    }
-
-    for (let char of keymashString.toUpperCase()) {
-        freq.set(char, (freq.get(char) || 0) + 1);
-    }
-
-    const sortedChars = Array.from(freq.entries()).sort((a, b) => b[1] - a[1]).map(entry => entry[0]);
+    const sortedChars = Array.from(this.keyFrequencies.entries()).sort((a, b) => b[1] - a[1]).map(entry => entry[0]);
 
     const positions = sortedChars.map(char => {
         return this.qwertyPositions.get(char);
@@ -75,12 +125,12 @@ export class Rearranger {
     return positions;
   }
   
-  private rearrange(keymashString: String) {
+  private rearrange() {
     // returns a Map of positions to chars
   
     let charsByUsage = this.getOrderedListOfChars();
   
-    let positionsByUsage = this.getOrderedListOfKeyPositions(keymashString);
+    let positionsByUsage = this.getOrderedListOfKeyPositions();
 
     let rearrangedPositions = new Map()
 
@@ -90,39 +140,6 @@ export class Rearranger {
 
     return rearrangedPositions;
   
-  }
-
-  getRearrangedLayout(keymashString: String) {
-
-    keymashString = keymashString.replace(/[^A-Za-z]/g, '')
-
-    let positionsToChars = this.rearrange(keymashString);
-
-    type Position = { row: number; col: number };
-
-    function row(map: Map<Position, string>, rowIndex: number): string {
-
-      const filteredPositions = Array.from(map.entries())
-          .filter(([key, value]) => key.row === rowIndex)
-          .map(([key, value]) => ({ col: key.col, char: value }));
-
-      filteredPositions.sort((a, b) => a.col - b.col);
-
-      const chars = filteredPositions.map(position => position.char);
-
-      return chars.join(' ');
-    }
-
-    let rearrangedLayout = [
-      '` 1 2 3 4 5 6 7 8 9 0 - = {bksp}',
-      ('{tab} ' + row(positionsToChars, 2) + ' [ ] \\'),
-      ('{lock} ' + row(positionsToChars, 1) + ' ; \' {enter}'),
-      ('{shift} ' + row(positionsToChars, 0) + ' , . / {shift}'),
-      '.com @ {space}'
-    ]
-
-    return rearrangedLayout;
-
   }
 
 }

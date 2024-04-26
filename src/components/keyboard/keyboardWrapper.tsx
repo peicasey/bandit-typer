@@ -23,8 +23,13 @@ const KeyboardWrapper: FunctionComponent<IProps> = ({
   return (
     <Keyboard
       keyboardRef={r => (keyboardRef.current = r)}
-      layout={{'custom': (new Rearranger()).getRearrangedLayout("zzzzzzzzzzzzzzzzzzzoommmmmmmmmmmmmm")}} // example, dummy string for testing
+      /*
+      layout={{'custom': (new Rearranger("qqqqqwwwweeerrty").getRearrangedLayout())}} // example, dummy string for testing
       layoutName={'custom'}
+      */
+      // okay, it looks like we have to change this based on whether or not we're rearranging. 
+      // But the above is how you'd do it with rearranging.
+      layoutName={'default'}
       onChange={onChange}
       onKeyPress={onKeyPress}
       onRender={() => console.log("Rendered Keyboard :)")}
