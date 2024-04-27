@@ -26,7 +26,7 @@ export default function Start() {
         newPicture = 'AZERTY.jpg';
         break;
       case 'CUSTOM':
-        // CUSTOM layout?
+        // add CUSTOM layout
         break;
       case 'DVORAK':
         newPicture = 'DVORAK.jpg';
