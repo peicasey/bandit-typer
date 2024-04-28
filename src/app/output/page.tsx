@@ -25,7 +25,7 @@ export default function Output() {
     <main className="flex min-h-screen items-center justify-between p-24 gap-16 bg-lightGreen">
       <div className="flex flex-col gap-8 justify-between">
           <h1 className="text-firGreen  text-6xl font-bold" style={poppins.style}>
-            Based on your range of motion, let's try this keyboard.
+            Based on your range of motion, let&apos;s try this keyboard.
           </h1>
           <p className="text-gray-600">
             Give it a quick try!
