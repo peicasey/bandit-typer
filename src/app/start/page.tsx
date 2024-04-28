@@ -16,7 +16,7 @@ export default function Start() {
   const [currentPicture, setCurrentPicture] = useState('QWERTY.jpg');
   const [selectedLayout, setSelectedLayout] = useState('');
 
-  const handleTextBoxClick = (label) => {
+  const handleTextBoxClick = (label: string) =>{
     let newPicture;
     switch (label) {
       case 'QWERTY':
@@ -34,11 +34,13 @@ export default function Start() {
       default:
         newPicture = currentPicture;
     }
-    setCurrentPicture(newPicture);
-    setSelectedLayout(label); 
+    // setCurrentPicture(newPicture);
+    // setSelectedLayout(label); 
+    setCurrentPicture(newPicture || ""); // Ensure newPicture is a string
+    setSelectedLayout(label || "");
   };
 
-  const TextBox = ({ label }) => (
+  const TextBox = ({ label }: { label: string })=> (
     <div
       style={{
         flex: '1',
