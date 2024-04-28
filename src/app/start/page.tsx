@@ -72,7 +72,7 @@ export default function Start() {
 
       <p style={{ color: '#7C847D', position: 'absolute', bottom: 'calc(10% + 280px)', left: '50%', transform: 'translateX(-50%)', fontFamily: 'Inter', fontSize: '32px'}}>This is your current keyboard layout.</p>
       
-      <img src={currentPicture} alt="Keyboard Layout" style={{ position: 'absolute', bottom: '45%', left: '50%', transform: 'translate(-50%, 0)', maxWidth: '500px', width: '100%' }} />
+      <img src={currentPicture} alt="Keyboard Layout" style={{ position: 'relative', bottom: '45%', left: '50%', transform: 'translate(-50%, 0)', maxWidth: '500px', width: '100%' }} />
 
       
       <div style={{ display: 'flex', justifyContent: 'center', position: 'absolute', bottom: 'calc(10% + 180px)', left: '50%', transform: 'translateX(-50%)' }}>
