@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useSearchParams } from 'next/navigation'
 import { useState } from "react";
 
 import { poppins } from "@/app/fonts";
@@ -9,8 +8,7 @@ import Keyboard from "@/components/keyboard/keyboard";
 
 export default function Start() {
 
-  const searchParams = useSearchParams()
-  const frequentlyUsed = searchParams.get('frequentlyUsed')
+  const frequentlyUsed = localStorage.getItem('frequentlyUsed') ? localStorage.getItem('frequentlyUsed') : ""
 
   const [input, setInput] = useState("");
 
