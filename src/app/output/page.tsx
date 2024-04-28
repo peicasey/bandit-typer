@@ -12,8 +12,9 @@ export default function Output() {
   const [frequentlyUsed, setFrequentlyUsed] = useState("");
 
   useEffect(() => {
-    const item = localStorage.getItem('frequentlyUsed') || "";
-    setFrequentlyUsed(item);
+    const item = localStorage.getItem('frequentlyUsed');
+    setFrequentlyUsed(item ? item : "");
+    console.log(item)
   }, []);
 
 
@@ -51,7 +52,8 @@ export default function Output() {
         <Keyboard 
           input={input} 
           setInput={setInput}
-          frequentlyUsed={ frequentlyUsed ? frequentlyUsed : ""}
+          frequentlyUsed={ frequentlyUsed ? frequentlyUsed : "" }
+          useCustom={true}
         ></Keyboard>
       </div>
     </main>

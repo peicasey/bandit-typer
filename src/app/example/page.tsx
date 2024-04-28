@@ -23,6 +23,7 @@ export default function Example() {
             <Keyboard 
                 input={input} setInput={setInput} 
                 frequentlyUsed={""} 
+                useCustom={false}
             />
             <button className="bg-calmGreen hover:bg-[#7ea77d] text-white text-center font-bold px-4 py-2 rounded-xl duration-200" style={poppins.style}
                 onClick={handlClick}

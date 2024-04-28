@@ -5,6 +5,7 @@ interface KeyboardProps {
   input: string;
   setInput: Dispatch<SetStateAction<string>>;
   frequentlyUsed: string;
+  useCustom: boolean;
 }
 
 export default function Keyboard ( props: KeyboardProps ) {
@@ -31,6 +32,7 @@ export default function Keyboard ( props: KeyboardProps ) {
         keyboardRef={keyboardRef} 
         onChange={props.setInput} 
         frequentlyUsed={props.frequentlyUsed} 
+        useCustom={props.useCustom}
       /> {/* Change here */}
     </div>
   );
