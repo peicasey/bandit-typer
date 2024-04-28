@@ -90,7 +90,7 @@ const KeyMashingPage: React.FC = () => {
               className="bg-calmGreen text-white font-semibold text-xl py-2 px-10 rounded"
               onClick={handleDoneClick}
             >
-              Looks good, I'm done typing
+              Looks good, I&apos;m done typing
             </button>
           )}
           {showImage && (
