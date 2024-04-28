@@ -11,7 +11,7 @@ export default function Heatmap() {
 
     // Effect to count frequency of a dummy string "qqwwerty" on mount
     useEffect(() => {
-      countFrequency("qqwwerty");
+      countFrequency("qqwwertyqpweopqeopqkpmsfiosjripofdopfgfogjbmdsufhsdnaibdiuhbncbzmxc,zmnbk;a owodj csidfsf ");
     }, []);
 
     // Function to count frequency of each character in the input
@@ -59,6 +59,13 @@ export default function Heatmap() {
         console.log("Color map:", newColorMap);
     };
 
+    const getButtonTheme = () => {
+      return Object.entries(colorMap).map(([key, value]) => ({
+          class: value,
+          buttons: key
+      }));
+    };
+
     return (
       <>
         <nav style={{ width: '100%', height: '64px', backgroundColor: '#88B28C', position: 'fixed', top: '0', left: '0', zIndex: '1000', display: 'flex', alignItems: 'center', paddingLeft: '20px' }}>
@@ -90,12 +97,7 @@ export default function Heatmap() {
                     ".com @ {space}"
                 ]
             }}
-            buttonTheme={[
-                {
-                    class: "hg-green",
-                    buttons: "Q W E R T Y q w e r t y"
-                }
-            ]}
+            buttonTheme={getButtonTheme()}
         />
           </div>
         </div>
