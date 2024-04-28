@@ -87,7 +87,7 @@ export default function Start() {
 
       </div>
 
-      <div style={{ width: '90%', maxWidth: '1357px', height: '10%', maxHeight: '107px', backgroundColor: 'white', position: 'relative', display: 'flex', justifyContent: 'space-between', padding: '20px', marginBottom: '50px' }}>
+      <div style={{ width: '90%', maxWidth: '1357px', height: '10%', maxHeight: '107px', backgroundColor: 'white', position: 'relative', display: 'flex', justifyContent: 'space-between', padding: '20px', marginBottom: '50px' , borderRadius: '20px'}}>
         <TextBox label="QWERTY" />
         <TextBox label="AZERTY" />
         <TextBox label="CUSTOM" />
