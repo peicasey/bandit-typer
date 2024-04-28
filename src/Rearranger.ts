@@ -26,7 +26,7 @@ export class Rearranger {
   constructor(keymashString: string) {
     // initialize keyFrequencies
     
-    keymashString = keymashString.replace(/[^A-Za-z]/g, '')
+    keymashString = keymashString ? keymashString.replace(/[^A-Za-z]/g, '') : '';
 
     for (let char of this.getOrderedListOfChars()) { // basically, we're smoothing the values by pretending each letter gets used at least once
         this.keyFrequencies.set(char, 1);
@@ -52,6 +52,16 @@ export class Rearranger {
 
   getRearrangedLayout() {
 
+    if (this.keyFrequencies.size === 0) {
+      return [
+        '` 1 2 3 4 5 6 7 8 9 0 - = {bksp}',
+        '{tab} q w e r t y u i o p [ ] \\',
+        '{lock} a s d f g h j k l ; \' {enter}',
+        '{shift} z x c v b n m , . / {shift}',
+        '.com @ {space}'
+      ];
+    }
+
     let positionsToChars = this.rearrange();
 
     type Position = { row: number; col: number };
@@ -76,6 +86,8 @@ export class Rearranger {
       ('{shift} ' + row(positionsToChars, 0) + ' , . / {shift}'),
       '.com @ {space}'
     ]
+
+    console.log(rearrangedLayout.join('\n'));
 
     return rearrangedLayout;
 

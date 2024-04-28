@@ -1,11 +1,17 @@
 "use client";
 
 import Image from "next/image";
+import { useSearchParams } from 'next/navigation'
 import { useState } from "react";
-import { poppins } from "../fonts";
+
+import { poppins } from "@/app/fonts";
 import Keyboard from "@/components/keyboard/keyboard";
 
 export default function Start() {
+
+  const searchParams = useSearchParams()
+  const frequentlyUsed = searchParams.get('frequentlyUsed')
+
   const [input, setInput] = useState("");
 
   return (
@@ -22,7 +28,12 @@ export default function Start() {
         </button>
       </div>
       <div>
-        <Keyboard input={input} setInput={setInput}></Keyboard>
+        {/* <p>{frequentlyUsed}</p> */}
+        <Keyboard 
+          input={input} 
+          setInput={setInput}
+          frequentlyUsed={ frequentlyUsed ? frequentlyUsed : ""}
+        ></Keyboard>
       </div>
     </main>
   );

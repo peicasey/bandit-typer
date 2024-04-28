@@ -6,11 +6,13 @@ import "react-simple-keyboard/build/css/index.css";
 interface IProps {
   onChange: (input: string) => void;
   keyboardRef: MutableRefObject<typeof Keyboard>;
+  frequentlyUsed: string;
 }
 
 const KeyboardWrapper: FunctionComponent<IProps> = ({
   onChange,
-  keyboardRef
+  keyboardRef,
+  frequentlyUsed,
 }) => {
   const [layoutName, setLayoutName] = useState("default");
 
@@ -23,13 +25,12 @@ const KeyboardWrapper: FunctionComponent<IProps> = ({
   return (
     <Keyboard
       keyboardRef={r => (keyboardRef.current = r)}
-      /*
-      layout={{'custom': (new Rearranger("qqqqqwwwweeerrty").getRearrangedLayout())}} // example, dummy string for testing
-      layoutName={'custom'}
-      */
+      
+      layout={{'custom': (new Rearranger(frequentlyUsed).getRearrangedLayout())}} // example, dummy string for testing
+      
       // okay, it looks like we have to change this based on whether or not we're rearranging. 
       // But the above is how you'd do it with rearranging.
-      layoutName={'default'}
+      layoutName={ frequentlyUsed ? 'custom' : 'default' }
       onChange={onChange}
       onKeyPress={onKeyPress}
       onRender={() => console.log("Rendered Keyboard :)")}

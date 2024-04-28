@@ -4,6 +4,7 @@ import KeyboardWrapper from "./keyboardWrapper";
 interface KeyboardProps {
   input: string;
   setInput: Dispatch<SetStateAction<string>>;
+  frequentlyUsed: string;
 }
 
 export default function Keyboard ( props: KeyboardProps ) {
@@ -26,7 +27,11 @@ export default function Keyboard ( props: KeyboardProps ) {
         />
       </div>
       
-      <KeyboardWrapper keyboardRef={keyboardRef} onChange={props.setInput} /> {/* Change here */}
+      <KeyboardWrapper 
+        keyboardRef={keyboardRef} 
+        onChange={props.setInput} 
+        frequentlyUsed={props.frequentlyUsed} 
+      /> {/* Change here */}
     </div>
   );
 };
