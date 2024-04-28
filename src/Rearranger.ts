@@ -86,8 +86,47 @@ export class Rearranger {
       ('{shift} ' + row(positionsToChars, 0) + ' , . / {shift}'),
       '.com @ {space}'
     ]
+    
+    return rearrangedLayout;
 
-    console.log(rearrangedLayout.join('\n'));
+  }
+
+  getRearrangedLayoutLower() {
+
+    if (this.keyFrequencies.size === 0) {
+      return [
+        '` 1 2 3 4 5 6 7 8 9 0 - = {bksp}',
+        '{tab} q w e r t y u i o p [ ] \\',
+        '{lock} a s d f g h j k l ; \' {enter}',
+        '{shift} z x c v b n m , . / {shift}',
+        '.com @ {space}'
+      ];
+    }
+
+    let positionsToChars = this.rearrange();
+
+    type Position = { row: number; col: number };
+
+    function row(map: Map<Position, string>, rowIndex: number): string {
+
+      const filteredPositions = Array.from(map.entries())
+          .filter(([key, value]) => key.row === rowIndex)
+          .map(([key, value]) => ({ col: key.col, char: value }));
+
+      filteredPositions.sort((a, b) => a.col - b.col);
+
+      const chars = filteredPositions.map(position => position.char);
+
+      return chars.join(' ');
+    }
+
+    let rearrangedLayout = [
+      '` 1 2 3 4 5 6 7 8 9 0 - = {bksp}',
+      ('{tab} ' + row(positionsToChars, 2).toLowerCase() + ' [ ] \\'),
+      ('{lock} ' + row(positionsToChars, 1).toLowerCase() + ' ; \' {enter}'),
+      ('{shift} ' + row(positionsToChars, 0).toLowerCase() + ' , . / {shift}'),
+      '.com @ {space}'
+    ]
 
     return rearrangedLayout;
 

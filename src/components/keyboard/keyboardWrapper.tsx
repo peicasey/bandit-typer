@@ -14,7 +14,7 @@ const KeyboardWrapper: FunctionComponent<IProps> = ({
   keyboardRef,
   frequentlyUsed,
 }) => {
-  const [layoutName, setLayoutName] = useState("default");
+  const [layoutName, setLayoutName] = useState( frequentlyUsed ? "customLower" : "default");
   const layout = {
     'default': [
       '` 1 2 3 4 5 6 7 8 9 0 - = {bksp}',
@@ -30,23 +30,46 @@ const KeyboardWrapper: FunctionComponent<IProps> = ({
       '{shift} Z X C V B N M &lt; &gt; ? {shift}',
       '.com @ {space}'
     ],
-    'custom': (frequentlyUsed ? new Rearranger(frequentlyUsed).getRearrangedLayout() : new Rearranger("frequentlyUsed").getRearrangedLayout())
+    'custom': (frequentlyUsed ? new Rearranger(frequentlyUsed).getRearrangedLayout() : new Rearranger("frequentlyUsed").getRearrangedLayout()),
+    'customLower': (frequentlyUsed ? new Rearranger(frequentlyUsed).getRearrangedLayoutLower() : new Rearranger("frequentlyUsed").getRearrangedLayoutLower()),
+    
   }
 
   const onKeyPress = (button: string) => {
+    console.log(layoutName)
+    
     if (button === "{shift}" || button === "{lock}") {
-      setLayoutName(layoutName === "default" ? "shift" : "default");
+      if (!frequentlyUsed) {
+        switch( layoutName ){
+          case 'default': 
+            setLayoutName("shift");
+            break;
+          case 'shift': 
+            setLayoutName("default");
+            break;
+        }
+      }
+      else {
+        switch( layoutName ){
+          case 'customLower': 
+            setLayoutName("custom");
+            break;
+          case 'custom': 
+            setLayoutName("customLower");
+            break;
+        }
+      }
     }
   };
 
   return (
     <Keyboard
       keyboardRef={r => (keyboardRef.current = r)}
-      layout = {layout}
+      layout = { layout }
       
       // okay, it looks like we have to change this based on whether or not we're rearranging. 
       // But the above is how you'd do it with rearranging.
-      layoutName={ frequentlyUsed ? 'custom' : 'default' }
+      layoutName={ layoutName }
       onChange={onChange}
       onKeyPress={onKeyPress}
       onRender={() => console.log("Rendered Keyboard :)")}

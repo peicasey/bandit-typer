@@ -28,7 +28,6 @@ export default function Start() {
         </button>
       </div>
       <div>
-        {/* <p>{frequentlyUsed}</p> */}
         <Keyboard 
           input={input} 
           setInput={setInput}
