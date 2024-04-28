@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center gap-16 bg-lightGreen overflow-hidden">
       <div className="flex flex-col w-full">
-        <div className="flex items-center justify-between gap-8 md:gap-16 p-8 md:p-16 pb-0 bg-white">
+        <div className="flex items-center justify-between gap-8 md:gap-16 p-8 md:p-16 pb-0 mt-20 bg-white">
           <div>
             <Image
               src="/bandit.png"

@@ -57,9 +57,6 @@ export default function Start() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24 gap-16" style={{ backgroundColor: '#CEEBD1', position: 'relative' }}>
-      <nav style={{ width: '100%', height: '64px', backgroundColor: '#88B28C', position: 'fixed', top: '0', left: '0', zIndex: '1000', display: 'flex', alignItems: 'center', paddingLeft: '20px' }}>
-        <img src="bandit.png" alt="Logo" style={{ width: '56px', height: '40px', marginRight: '20px' }} />
-      </nav>
       
       <h1 style={{ color: '#2E6A33', fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '96px' }}>BanditTyper</h1>
       
