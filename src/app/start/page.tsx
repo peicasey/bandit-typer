@@ -63,19 +63,18 @@ export default function Start() {
       
       <h1 style={{ color: '#2E6A33', fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '96px' }}>BanditTyper</h1>
       
-      <div style={{ width: '90%', maxWidth: '1357px', height: '10%', maxHeight: '107px', backgroundColor: 'white', position: 'absolute', bottom: '10%', left: '50%', transform: 'translateX(-50%)', borderRadius: '20px', display: 'flex', justifyContent: 'space-between', padding: '20px' }}>
-        <TextBox label="QWERTY" />
-        <TextBox label="AZERTY" />
-        <TextBox label="CUSTOM" />
-        <TextBox label="DVORAK" />
-      </div>
-
+      
+      {/* <p style={{ color: '#7C847D', display: 'flex', }}>This is your current keyboard layout.</p> */}
       <p style={{ color: '#7C847D', position: 'absolute', bottom: 'calc(10% + 280px)', left: '50%', transform: 'translateX(-50%)', fontFamily: 'Inter', fontSize: '32px'}}>This is your current keyboard layout.</p>
       
-      <img src={currentPicture} alt="Keyboard Layout" style={{ position: 'relative', bottom: '45%', left: '50%', transform: 'translate(-50%, 0)', maxWidth: '500px', width: '100%' }} />
+      <div className="flex items-center justify-center">
+        <img src={currentPicture} alt="Keyboard Layout" style={{ position: 'relative',maxWidth: '500px', width: '100%' }} />
+
+      </div>
+
 
       
-      <div style={{ display: 'flex', justifyContent: 'center', position: 'absolute', bottom: 'calc(10% + 180px)', left: '50%', transform: 'translateX(-50%)' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', }}>
         <Link href="/input">
           <button style={{ width: '333px', height: '60px', borderRadius: '20px', backgroundColor: '#88B28C', marginRight: '20px', fontFamily: 'Inter', fontWeight: 'bold', fontSize: '25px', color: 'white' }}>TAKE TYPING TEST</button>
         </Link>
@@ -83,6 +82,16 @@ export default function Start() {
         <Link href="/more-layouts">
           <button style={{ width: '333px', height: '60px', borderRadius: '20px', backgroundColor: '#88B28C', fontWeight: 'bold', fontSize: '25px', fontFamily: 'Inter', color: 'white' }}>MORE LAYOUTS...</button>
         </Link>
+
+        
+
+      </div>
+
+      <div style={{ width: '90%', maxWidth: '1357px', height: '10%', maxHeight: '107px', backgroundColor: 'white', position: 'relative', display: 'flex', justifyContent: 'space-between', padding: '20px', marginBottom: '50px' }}>
+        <TextBox label="QWERTY" />
+        <TextBox label="AZERTY" />
+        <TextBox label="CUSTOM" />
+        <TextBox label="DVORAK" />
       </div>
     </main>
   );
