@@ -1,0 +1,14 @@
+.simple-keyboard.hg-layout-default .hg-button.hg-red {
+    background: rgb(255, 0, 0, 0.7);
+    color: white;
+  }
+
+.simple-keyboard.hg-layout-default .hg-button.hg-yellow {
+    background: rgba(220, 220, 45, 0.7);
+    color: white;
+}
+
+.simple-keyboard.hg-layout-default .hg-button.hg-green {
+background: rgba(8, 117, 33, 0.7);
+color: white;
+}
