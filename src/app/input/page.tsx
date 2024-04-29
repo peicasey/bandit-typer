@@ -18,7 +18,9 @@ const KeyMashingPage: React.FC = () => {
         setShowKeyboard(true);
         setShowImage(false);
       }
-      setInputValue(prevValue => prevValue + event.key);
+      const pressedKey = event.key;
+      setInputValue(prevValue => prevValue + pressedKey);
+      localStorage.setItem("userInput", inputValue + pressedKey); // Store updated input value in local storage
       setKeyCount(prevCount => prevCount + 1);
     };
 
@@ -27,7 +29,7 @@ const KeyMashingPage: React.FC = () => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [showKeyboard]);
+  }, [showKeyboard, inputValue]);
 
   const handleDoneClick = () => {
     console.log("User done typing");
@@ -51,7 +53,7 @@ const KeyMashingPage: React.FC = () => {
           {showKeyboard && (
             <div className="bg-white rounded-lg p-8 shadow-lg max-h-screen">
               <div className="mr-4 mt-60"> {/* Add margin for separation */}
-                <Keyboard input={inputValue} setInput={setInput} frequentlyUsed={""} useCustom={true} />
+                <Keyboard input={input} setInput={setInput} frequentlyUsed={""} useCustom={true} />
               </div>
             </div>
           )}
@@ -105,3 +107,4 @@ const KeyMashingPage: React.FC = () => {
 };
 
 export default KeyMashingPage;
+
