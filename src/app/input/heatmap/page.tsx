@@ -12,25 +12,25 @@ export default function Heatmap() {
 
     // Effect to count frequency of a dummy string "qqwwerty" on mount
     useEffect(() => {
+      // Function to count frequency of each character in the input
+      const countFrequency = (text: string) => {
+        const frequency: { [key: string]: number } = {};
+
+        for (const char of text) {
+            if (frequency[char]) {
+                frequency[char] += 1;
+            } else {
+                frequency[char] = 1;
+            }
+        }     
+        // Log the complete frequency object
+        console.log("Complete frequency map:", frequency);
+    
+        assignColors(frequency);
+      };
+
       countFrequency("qqwwertyqpweopqeopqkpmsfiosjripofdopfgfogjbmdsufhsdnaibdiuhbncbzmxc,zmnbk;a owodj csidfsf ");
     }, []);
-
-    // Function to count frequency of each character in the input
-    const countFrequency = (text: string) => {
-      const frequency: { [key: string]: number } = {};
-
-      for (const char of text) {
-          if (frequency[char]) {
-              frequency[char] += 1;
-          } else {
-              frequency[char] = 1;
-          }
-      }     
-      // Log the complete frequency object
-      console.log("Complete frequency map:", frequency);
-  
-      assignColors(frequency);
-  };
 
     // Function to assign colors based on frequency
     const assignColors = (frequency: { [key: string]: number }) => {

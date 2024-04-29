@@ -1,5 +1,6 @@
 "use client"
 
+import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import Keyboard from '../../components/keyboard/keyboard';
 import { poppins } from "@/app/fonts";
@@ -74,7 +75,7 @@ const KeyMashingPage: React.FC = () => {
           )}
           {showImage && (
             <div>
-              <img src="bandit.png" alt="Placeholder Image" width="200" height="200"/>
+              <Image src="/bandit.png" alt="" width={200} height={200}/>
             </div>
           )}
         </div>

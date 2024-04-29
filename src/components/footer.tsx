@@ -10,7 +10,7 @@ export default function Footer() {
                 <p className="text-green-950 font-bold" style={poppins.style}>BanditTyper</p>
             </div>
             <div className="flex flex-col gap-4 text-firGreen text-right">
-                <p>Created for Texas A&M's CSCE 436 (HCI) course</p>
+                <p>Created for Texas A&M&apos;s CSCE 436 (HCI) course</p>
                 <ul className="text-xs">
                     <li>Brigham Pettit</li>
                     <li>Victoria Chen</li>
