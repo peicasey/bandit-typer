@@ -9,6 +9,12 @@ import { poppins } from "@/app/fonts";
 
 export default function Heatmap() {
     const [colorMap, setColorMap] = useState<{ [key: string]: string }>({});
+    const [frequentlyUsed, setFrequentlyUsed] = useState<string>("");
+
+    useEffect(() => {
+      const item = localStorage.getItem('frequentlyUsed');
+      setFrequentlyUsed(item ? item : "");
+    }, []);
 
     // Effect to count frequency of a dummy string "qqwwerty" on mount
     useEffect(() => {
@@ -29,8 +35,12 @@ export default function Heatmap() {
         assignColors(frequency);
       };
 
-      countFrequency("qqwwertyqpweopqeopqkpmsfiosjripofdopfgfogjbmdsufhsdnaibdiuhbncbzmxc,zmnbk;a owodj csidfsf ");
-    }, []);
+      const item = localStorage.getItem('frequentlyUsed');
+      setFrequentlyUsed(item ? item : "");
+      console.log(frequentlyUsed)
+
+      countFrequency(frequentlyUsed);
+    }, [frequentlyUsed]);
 
     // Function to assign colors based on frequency
     const assignColors = (frequency: { [key: string]: number }) => {
