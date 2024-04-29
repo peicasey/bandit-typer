@@ -6,7 +6,7 @@ import { poppins } from "@/app/fonts";
 
 export default function Start() {
   const [currentPicture, setCurrentPicture] = useState('QWERTY.jpg');
-  const [selectedLayout, setSelectedLayout] = useState('');
+  const [selectedLayout, setSelectedLayout] = useState('QWERTY');
 
   const handleTextBoxClick = (label: string) =>{
     let newPicture;
