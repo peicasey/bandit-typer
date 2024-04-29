@@ -33,7 +33,7 @@ const KeyMashingPage: React.FC = () => {
     console.log("User done typing");
     console.log(inputValue);
     localStorage.setItem("frequentlyUsed", inputValue);
-    window.location.href = "/output"; // Redirect to another page
+    window.location.href = "/input/heatmap"; // Redirect to another page
   };
 
   const handleStartTypingClick = () => {
@@ -51,7 +51,7 @@ const KeyMashingPage: React.FC = () => {
           {showKeyboard && (
             <div className="bg-white rounded-lg p-8 shadow-lg max-h-screen">
               <div className="mr-4 mt-60"> {/* Add margin for separation */}
-                <Keyboard input={inputValue} setInput={setInput} frequentlyUsed={""}/>
+                <Keyboard input={inputValue} setInput={setInput} frequentlyUsed={""} useCustom={true} />
               </div>
             </div>
           )}
