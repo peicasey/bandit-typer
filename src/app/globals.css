@@ -74,3 +74,15 @@
       @apply bg-background text-foreground;
     }
   }
+  
+  @media(max-width:850px) {
+    .wave-container::before {    
+      height: 65px
+    }  
+  }
+
+
+::selection {
+  background: #7ea77d;
+  color: white
+}

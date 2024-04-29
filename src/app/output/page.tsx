@@ -1,16 +1,26 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useToast } from "@/components/ui/use-toast"
 
 import { poppins } from "@/app/fonts";
 import Keyboard from "@/components/keyboard/keyboard";
 
-export default function Start() {
+export default function Output() {
 
-  const frequentlyUsed = localStorage.getItem('frequentlyUsed') ? localStorage.getItem('frequentlyUsed') : ""
+  const [frequentlyUsed, setFrequentlyUsed] = useState("");
+
+  useEffect(() => {
+    const item = localStorage.getItem('frequentlyUsed');
+    setFrequentlyUsed(item ? item : "");
+    console.log(item)
+  }, []);
+
 
   const [input, setInput] = useState("");
+  const { toast } = useToast();
+  var currentdate = new Date();
 
   console.log("OUTPUT - Frequently used:", frequentlyUsed);
 
@@ -26,7 +36,20 @@ export default function Start() {
           <p className="text-gray-600">
             Give it a quick try!
           </p>
-        <button className="bg-calmGreen hover:bg-[#7ea77d] text-white text-center font-bold px-4 py-2 rounded-xl duration-200" style={poppins.style}>
+        <button className="bg-calmGreen hover:bg-[#7ea77d] text-white text-center font-bold px-4 py-2 rounded-xl duration-200" 
+          style={poppins.style}
+          onClick={() => {
+            toast({
+              title: "Keyboard Layout",
+              description: "Saved: " + currentdate.getDate() + "/"
+              + (currentdate.getMonth()+1)  + "/" 
+              + currentdate.getFullYear() + " @ "  
+              + currentdate.getHours() + ":"  
+              + currentdate.getMinutes() + ":" 
+              + currentdate.getSeconds(),
+            })
+          }}
+        >
           save keyboard to profile
         </button>
       </div>
@@ -34,7 +57,8 @@ export default function Start() {
         <Keyboard 
           input={input} 
           setInput={setInput}
-          frequentlyUsed={ frequentlyUsed ? frequentlyUsed : ""}
+          frequentlyUsed={ frequentlyUsed ? frequentlyUsed : "" }
+          useCustom={true}
         ></Keyboard>
       </div>
     </main>

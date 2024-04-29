@@ -86,6 +86,8 @@ export class Rearranger {
       ('{shift} ' + row(positionsToChars, 0) + ' , . / {shift}'),
       '.com @ {space}'
     ]
+
+    console.log(rearrangedLayout)
     
     return rearrangedLayout;
 

@@ -7,14 +7,17 @@ interface IProps {
   onChange: (input: string) => void;
   keyboardRef: MutableRefObject<typeof Keyboard>;
   frequentlyUsed: string;
+  useCustom: boolean;
 }
 
 const KeyboardWrapper: FunctionComponent<IProps> = ({
   onChange,
   keyboardRef,
   frequentlyUsed,
+  useCustom,
 }) => {
-  const [layoutName, setLayoutName] = useState( frequentlyUsed ? "customLower" : "default");
+  // console.log("this is different: " + frequentlyUsed ? "customLower" : "default")
+  const [layoutName, setLayoutName] = useState( useCustom ? "customLower" : "default" );
   const layout = {
     'default': [
       '` 1 2 3 4 5 6 7 8 9 0 - = {bksp}',
@@ -37,9 +40,10 @@ const KeyboardWrapper: FunctionComponent<IProps> = ({
 
   const onKeyPress = (button: string) => {
     console.log(layoutName)
+    console.log(frequentlyUsed)
     
     if (button === "{shift}" || button === "{lock}") {
-      if (!frequentlyUsed) {
+      if (frequentlyUsed !== "") {
         switch( layoutName ){
           case 'default': 
             setLayoutName("shift");
@@ -63,15 +67,16 @@ const KeyboardWrapper: FunctionComponent<IProps> = ({
   };
 
   return (
+    
     <Keyboard
       keyboardRef={r => (keyboardRef.current = r)}
       layout = { layout }
-      
+
       // okay, it looks like we have to change this based on whether or not we're rearranging. 
       // But the above is how you'd do it with rearranging.
       layoutName={ layoutName }
-      onChange={onChange}
-      onKeyPress={onKeyPress}
+      onChange={ onChange }
+      onKeyPress={ onKeyPress }
       onRender={() => console.log("Rendered Keyboard :)")}
     />
   );
