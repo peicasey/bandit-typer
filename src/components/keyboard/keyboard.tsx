@@ -4,6 +4,8 @@ import KeyboardWrapper from "./keyboardWrapper";
 interface KeyboardProps {
   input: string;
   setInput: Dispatch<SetStateAction<string>>;
+  frequentlyUsed: string;
+  useCustom: boolean;
 }
 
 export default function Keyboard ( props: KeyboardProps ) {
@@ -22,11 +24,16 @@ export default function Keyboard ( props: KeyboardProps ) {
           value={props.input}
           placeholder={"Tap on the virtual keyboard to start"}
           onChange={e => onChangeInput(e)}
-          className="resize w-full"
+          className="resize-y w-full"
         />
       </div>
       
-      <KeyboardWrapper keyboardRef={keyboardRef} onChange={props.setInput} /> {/* Change here */}
+      <KeyboardWrapper 
+        keyboardRef={keyboardRef} 
+        onChange={props.setInput} 
+        frequentlyUsed={props.frequentlyUsed} 
+        useCustom={props.useCustom}
+      /> {/* Change here */}
     </div>
   );
 };

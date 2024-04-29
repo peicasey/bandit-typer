@@ -1,6 +1,8 @@
 # Bandit Typer
 <img src="https://github.com/peicasey/bandit-typer/assets/91210043/d7c14afc-4d38-4f16-960d-e7f6e3090f44" width="200px"></img>
 
+![GitHub deployments](https://img.shields.io/github/deployments/peicasey/bandit-typer/production?style=flat-square&label=vercel%20deployment)
+
 An app to help users with a limited range of motion get the best typing experience! Takes in user input of sampled typing range and commonly used characters to find the optimal layout. Currently supports English only.
 
 Final project for Texas A&M's Human-Computer Interaction course (CSCE 432) by Group 2. 
