@@ -57,13 +57,15 @@ export default function Heatmap() {
         for (const key in frequency) {
             const freq = frequency[key];
             if (freq === maxFrequency) {
-                newColorMap[key] = "hg-red"; // Most frequent
+                newColorMap[key] = "hg-most"; // Most frequent
             } else if (freq === minFrequency) {
-                newColorMap[key] = "hg-green"; // Least frequent
+                newColorMap[key] = "hg-least"; // Least frequent
             } else if (freq > threshold) {
-                newColorMap[key] = "hg-yellow"; // Above average frequency
+                newColorMap[key] = "hg-above_avg"; // Above average frequency
+            } else if (freq === threshold) {
+              newColorMap[key] = "hg-avg"; // average frequency
             } else {
-                newColorMap[key] = "hg-green"; // Below average frequency, or could use another color or gradient logic here
+                newColorMap[key] = "hg-below_avg"; // Below average frequency, or could use another color or gradient logic here
             }
         }
         setColorMap(newColorMap);
@@ -111,6 +113,7 @@ export default function Heatmap() {
             }}
             buttonTheme={getButtonTheme()}
           />
+          <img src="/heatmap.png" alt="Heatmap" className="mt-8" />
         </div>
       </main>
     );
