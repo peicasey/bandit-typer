@@ -5,6 +5,7 @@ import Keyboard from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
 import Link from 'next/link';
 import "./heatmap.css";
+import { poppins } from "@/app/fonts";
 
 export default function Heatmap() {
     const [colorMap, setColorMap] = useState<{ [key: string]: string }>({});
@@ -67,25 +68,26 @@ export default function Heatmap() {
     };
 
     return (
-      <>
-        <nav style={{ width: '100%', height: '64px', backgroundColor: '#88B28C', position: 'fixed', top: '0', left: '0', zIndex: '1000', display: 'flex', alignItems: 'center', paddingLeft: '20px' }}>
-          <img src="/bandit.png" alt="Logo" style={{ width: '56px', height: '40px', marginRight: '20px' }} />
-        </nav>
-        <div style={{ display: 'flex', minHeight: 'calc(100vh)', paddingTop: '64px' }}>{/* Green canvas side */}
-          <div style={{ width: '50%', backgroundColor: '#CEEBD1', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '24px', gap: '16px' }}>
-            {/* All content goes here */}
-            <h1 style={{ color: '#2E6A33', fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '96px', marginTop: '0' }}>Here is your range of motion.</h1>
-            <p style={{ color: '#7C847D', fontFamily: 'Inter', fontSize: '32px', textAlign: 'center' }}><br></br>Are you surprised? Does this seem accurate? <br/> If not, go back and type a bit more. Otherwise, feel free to head onward!</p>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
-              <Link href="/input">
-                <button style={{ width: '333px', height: '60px', borderRadius: '20px', backgroundColor: '#88B28C', fontFamily: 'Inter', fontWeight: 'bold', fontSize: '25px', color: 'white' }}>Let me go back and edit...</button>
-              </Link>
-              <Link href="/output">
-                <button style={{ width: '333px', height: '60px', borderRadius: '20px', backgroundColor: '#88B28C', fontFamily: 'Inter', fontWeight: 'bold', fontSize: '25px', color: 'white' }}>Looks good!</button>
-              </Link>
-            </div>
+      <main className="flex min-h-screen pt-[64px]">
+        <div className='flex flex-col gap-8 bg-lightGreen p-16'>{/* Green canvas side */}
+          {/* All content goes here */}
+          <h1 className="text-firGreen font-bold text-6xl" style={poppins.style}>Here is your range of motion.</h1>
+          
+          <div className="text-gray-600 flex flex-col gap-4">
+            <p>Are you surprised? Does this seem accurate?</p>
+            <p>If not, go back and type a bit more. Otherwise, feel free to head onward!</p>
           </div>
-          <div style={{ width: '50%', backgroundColor: 'white', display: 'flex', alignItems: 'center' }}> {/* White canvas side */}
+          
+          <div className="flex items-center gap-8">
+            <Link href="/input"  className="bg-gray-400 hover:bg-[#8f9199] text-white text-center font-bold px-4 py-2 rounded-xl duration-200" style={poppins.style}>
+              Let me go back and edit...
+            </Link>
+            <Link href="/output"  className="bg-calmGreen hover:bg-[#7ea77d] text-white text-center font-bold px-4 py-2 rounded-xl duration-200" style={poppins.style}>
+              Looks good!
+            </Link>
+          </div>
+        </div>
+        <div className="flex flex-col items-center justify-center p-16"> {/* White canvas side */}
           <Keyboard
             theme="hg-theme-default hg-layout-default myTheme"
             layout={{
@@ -98,9 +100,8 @@ export default function Heatmap() {
                 ]
             }}
             buttonTheme={getButtonTheme()}
-        />
-          </div>
+          />
         </div>
-      </>
+      </main>
     );
 }

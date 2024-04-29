@@ -43,7 +43,7 @@ const KeyboardWrapper: FunctionComponent<IProps> = ({
     console.log(frequentlyUsed)
     
     if (button === "{shift}" || button === "{lock}") {
-      if (frequentlyUsed !== "") {
+      if (!useCustom) {
         switch( layoutName ){
           case 'default': 
             setLayoutName("shift");

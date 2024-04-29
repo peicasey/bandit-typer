@@ -24,7 +24,7 @@ export default function Keyboard ( props: KeyboardProps ) {
           value={props.input}
           placeholder={"Tap on the virtual keyboard to start"}
           onChange={e => onChangeInput(e)}
-          className="resize-y w-full"
+          className="resize-y w-full max-h-[20vh]"
         />
       </div>
       

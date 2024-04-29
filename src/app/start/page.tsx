@@ -1,16 +1,8 @@
-// import Image from "next/image";
-
-// export default function Start() {
-//   return (
-//     <main className="flex min-h-screen flex-col items-center justify-between p-24 gap-16">
-
-//     </main>
-//   );
-// }
 'use client'
 import Link from 'next/link';
 import { useState } from 'react';
 import Image from "next/image";
+import { poppins } from "@/app/fonts";
 
 export default function Start() {
   const [currentPicture, setCurrentPicture] = useState('QWERTY.jpg');
@@ -41,50 +33,34 @@ export default function Start() {
   };
 
   const TextBox = ({ label }: { label: string })=> (
-    <div
-      style={{
-        flex: '1',
-        textAlign: 'center',
-        cursor: 'pointer',
-        color: selectedLayout === label ? '#88B28C' : '#7C847D', 
-        textDecoration: selectedLayout === label ? 'underline' : 'none', 
-      }}
+    <div className="text-lg hover:translate-y-[-4px] hover:cursor-pointer duration-200 group"
       onClick={() => handleTextBoxClick(label)}
     >
-      <p style={{ fontFamily: 'Inter', fontSize: '32px', fontWeight: 'bold' }}>{label}</p>
+      <p>{label}</p>
+      <div className={`h-1 w-full bg-calmGreen rounded-lg ${selectedLayout === label ? 'opacity-100' : 'opacity-0'}`}></div>
     </div>
   );
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24 gap-16" style={{ backgroundColor: '#CEEBD1', position: 'relative' }}>
       
-      <h1 style={{ color: '#2E6A33', fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '96px' }}>BanditTyper</h1>
+      <h1 className='text-firGreen font-bold text-6xl' style={poppins.style}>BanditTyper</h1>
       
+      <div className="flex flex-col items-center justify-center gap-4">
+        <Image src={"/" + currentPicture} alt="Current Keyboard Layout" width={500} height={100} />
+        <p className="text-gray-700">This is your current keyboard layout.</p>
+      </div>
       
-      {/* <p style={{ color: '#7C847D', display: 'flex', }}>This is your current keyboard layout.</p> */}
-      <p style={{ color: '#7C847D', position: 'absolute', bottom: 'calc(10% + 280px)', left: '50%', transform: 'translateX(-50%)', fontFamily: 'Inter', fontSize: '32px'}}>This is your current keyboard layout.</p>
-      
-      <div className="flex items-center justify-center">
-        <img src={currentPicture} alt="Keyboard Layout" style={{ position: 'relative',maxWidth: '500px', width: '100%' }} />
-
+      <div className="flex items-center justify-center gap-4">
+        <Link href="/input" className="bg-calmGreen hover:bg-[#7ea77d] text-white text-center font-bold px-4 py-2 rounded-xl duration-200" style={poppins.style}>
+          TAKE TYPING TEST
+        </Link>
+        <Link href="/more-layouts" className="bg-calmGreen hover:bg-[#7ea77d] text-white text-center font-bold px-4 py-2 rounded-xl duration-200" style={poppins.style}>
+          MORE LAYOUTS...
+        </Link>
       </div>
 
-
-      
-      <div style={{ display: 'flex', justifyContent: 'center', }}>
-        <Link href="/input">
-          <button style={{ width: '333px', height: '60px', borderRadius: '20px', backgroundColor: '#88B28C', marginRight: '20px', fontFamily: 'Inter', fontWeight: 'bold', fontSize: '25px', color: 'white' }}>TAKE TYPING TEST</button>
-        </Link>
-        {/*DONT HAVE A ROUTE*/}
-        <Link href="/more-layouts">
-          <button style={{ width: '333px', height: '60px', borderRadius: '20px', backgroundColor: '#88B28C', fontWeight: 'bold', fontSize: '25px', fontFamily: 'Inter', color: 'white' }}>MORE LAYOUTS...</button>
-        </Link>
-
-        
-
-      </div>
-
-      <div style={{ width: '90%', maxWidth: '1357px', height: '10%', maxHeight: '107px', backgroundColor: 'white', position: 'relative', display: 'flex', justifyContent: 'space-between', padding: '20px', marginBottom: '50px' , borderRadius: '20px'}}>
+      <div className="bg-white px-8 py-4 rounded-2xl flex gap-8">
         <TextBox label="QWERTY" />
         <TextBox label="AZERTY" />
         <TextBox label="CUSTOM" />
