@@ -110,7 +110,7 @@ export default function Home() {
           <div className="flex flex-col">
             {feedback.map((f, i) => ( 
               <div key={i} className="bg-white rounded-xl p-4 my-4 text-sm italic hover:translate-x-2 duration-200">
-                <p>"{f}"</p>
+                <p>&quot;{f}&quot;</p>
               </div>
             ))}
           </div>
@@ -135,8 +135,8 @@ export default function Home() {
                 50% of typists are not touch typists
               </a>, so they would not have to relearn muscle memory.
             </li>
-            <li>In situations where a user's range of motion is often limited (ie. they regularly do tasks that limit their range of motion), the benefit of a new layout would outweigh the costs.</li>
-            <li>BanditTyper can also generate keyboard layouts for mobile, where many users also don't touch type.</li>
+            <li>In situations where a user&apos;s range of motion is often limited (ie. they regularly do tasks that limit their range of motion), the benefit of a new layout would outweigh the costs.</li>
+            <li>BanditTyper can also generate keyboard layouts for mobile, where many users also don&apos;t touch type.</li>
           </ul>
         </div>
       </div>

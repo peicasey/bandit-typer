@@ -34,7 +34,7 @@ export default function Output() {
         <p className="text-gray-600">
           Give it a quick try!
         </p>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col md:flex-row gap-2">
           <button className="bg-calmGreen hover:bg-[#7ea77d] text-white text-center font-bold px-4 py-2 rounded-xl duration-200" 
             style={poppins.style}
             onClick={() => {

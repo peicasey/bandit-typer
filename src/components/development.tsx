@@ -126,8 +126,8 @@ export default function Development() {
                     </div>
                     <div className='mt-2 pl-4'>
                       <ul className='text-sm list-disc dark:text-neutral-400'>
-                      {exp.description.map((desc) => (
-                        <li className='mt-2'>{desc}</li>
+                      {exp.description.map((desc, k) => (
+                        <li className='mt-2' key={"li" + k}>{desc}</li>
                       ))}
                       </ul>
                     </div>
@@ -147,7 +147,7 @@ export default function Development() {
           </div>
           <div className='flex items-center'>     
             {STAGES.map((exp, idx) => (
-              <div className='flex flex-col items-center justify-center'>
+              <div className='flex flex-col items-center justify-center' key={"stage" + idx}>
                 <div className='flex items-center w-full '>
                   <div className=' bg-calmGreen h-1 flex-grow'></div>
                   <div

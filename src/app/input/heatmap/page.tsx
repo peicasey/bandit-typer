@@ -113,7 +113,7 @@ export default function Heatmap() {
             }}
             buttonTheme={getButtonTheme()}
           />
-          <img src="/heatmap.png" alt="Heatmap" className="mt-8" />
+          <Image src="/heatmap.png" alt="Heatmap" className="mt-8 w-full" width="500" height="100" />
         </div>
       </main>
     );
