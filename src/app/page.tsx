@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { poppins } from "./fonts";
 import Chart from "@/components/chart";
+import Development from "@/components/development";
 
 const feedback = [
   "The UI looks really good!",
@@ -13,7 +14,7 @@ const feedback = [
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center gap-16 bg-lightGreen overflow-hidden">
+    <main className="flex min-h-screen flex-col items-center gap-16 bg-lightGreen overflow-hidden pb-36">
       <div className="flex flex-col w-full">
         <div className="flex items-center justify-between gap-8 md:gap-16 p-8 md:p-16 pb-0 mt-20 bg-white">
           <div>
@@ -34,29 +35,35 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className="bg-white w-full ">
-          <div className="absolute w-full translate-y-8">
+        <div>
+          <div className="bg-white w-full ">
+            <div className="absolute w-full translate-y-8">
+              <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 390" xmlns="http://www.w3.org/2000/svg" className="transition duration-300 ease-in-out delay-150"><path d="M 0,400 L 0,0 C 301.5,44.5 603,89 843,89 C 1083,89 1261.5,44.5 1440,0 L 1440,400 L 0,400 Z" stroke="none" stroke-width="0" fill="#88B28C" fill-opacity="1" className="transition-all duration-300 ease-in-out delay-150 path-0"></path></svg>
+            </div>
+            <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 390" xmlns="http://www.w3.org/2000/svg" className="transition duration-300 ease-in-out delay-150"><path d="M 0,400 L 0,0 C 301.5,44.5 603,89 843,89 C 1083,89 1261.5,44.5 1440,0 L 1440,400 L 0,400 Z" stroke="none" stroke-width="0" fill="#CEEBD1" fill-opacity="1" className="transition-all duration-300 ease-in-out delay-150 path-0"></path></svg>
+          </div>
+          <div className="z-[100] absolute w-full px-24 bg-calmGreen translate-y-[-10vh]">
+            <h2 className="w-full text-center text-xl sm:text-3xl font-bold mb-4" style={poppins.style}>Introduction and Motivation</h2>
+            <p>
+              We wanted to help users navigate the situational inaccessibility that arises when 
+              a user has a limited range of motion that usual. For instance, when you can only 
+              type with one hand -- ie. when cooking or when one hand 
+              is wearing a sock puppet of colossal importance. These situations would change the 
+              user&apos;s range of motion to favor keys nearer to the center of the keyboard over
+              peripheral keys. 
+            </p>
+          </div>
+          <div className=" w-full rotate-180 ">
             <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 390" xmlns="http://www.w3.org/2000/svg" className="transition duration-300 ease-in-out delay-150"><path d="M 0,400 L 0,0 C 301.5,44.5 603,89 843,89 C 1083,89 1261.5,44.5 1440,0 L 1440,400 L 0,400 Z" stroke="none" stroke-width="0" fill="#88B28C" fill-opacity="1" className="transition-all duration-300 ease-in-out delay-150 path-0"></path></svg>
           </div>
-          <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 390" xmlns="http://www.w3.org/2000/svg" className="transition duration-300 ease-in-out delay-150"><path d="M 0,400 L 0,0 C 301.5,44.5 603,89 843,89 C 1083,89 1261.5,44.5 1440,0 L 1440,400 L 0,400 Z" stroke="none" stroke-width="0" fill="#CEEBD1" fill-opacity="1" className="transition-all duration-300 ease-in-out delay-150 path-0"></path></svg>
         </div>
-        <div className=" w-full rotate-180 ">
-          <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 390" xmlns="http://www.w3.org/2000/svg" className="transition duration-300 ease-in-out delay-150"><path d="M 0,400 L 0,0 C 301.5,44.5 603,89 843,89 C 1083,89 1261.5,44.5 1440,0 L 1440,400 L 0,400 Z" stroke="none" stroke-width="0" fill="#88B28C" fill-opacity="1" className="transition-all duration-300 ease-in-out delay-150 path-0"></path></svg>
-        </div>
+        
       </div>
 
       <div className="flex flex-col items-center gap-4 p-24">
-        <h2 className="text-xl sm:text-3xl font-bold" style={poppins.style}>Introduction and Motivation</h2>
-        <p>
-          We wanted to help users navigate the situational inaccessibility that arises when 
-          a user has a limited range of motion that usual. For instance, when you can only 
-          type with one hand -- ie. when cooking or when one hand 
-          is wearing a sock puppet of colossal importance. These situations would change the 
-          user&apos;s range of motion to favor keys nearer to the center of the keyboard over
-          peripheral keys. 
-        </p>
+        <h2 className="text-xl sm:text-3xl font-bold" style={poppins.style}>Development Process</h2>
+        <Development/>
       </div>
-      
 
       <div className="bg-[#7ea77d] w-full p-8 flex justify-center">
         <div className="flex flex-col gap-8">
@@ -69,7 +76,7 @@ export default function Home() {
         </div>
       </div> 
       
-      <div className="flex flex-col items-center gap-4 p-8">
+      <div className="flex flex-col items-center gap-4 p-8 pt-24">
         <h2 className="text-xl sm:text-3xl font-bold" style={poppins.style}>Presentation & Demo</h2>
         <div className="w-full flex justify-between gap-6">
           <div className="flex flex-col gap-4 p-2">
@@ -94,9 +101,9 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col items-center gap-4 p-24">
+      <div className="flex flex-col items-center gap-4 p-24 pb-0">
         <h2 className="text-xl sm:text-3xl font-bold" style={poppins.style}>User Evaluation Results</h2>
-        <div className="w-full flex gap-6 justify-between">
+        <div className="w-full flex flex-col lg:flex-row gap-6 justify-between">
           <div className="bg-white rounded-xl p-6 flex-grow ">
             <Chart/>
           </div>
