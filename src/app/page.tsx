@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { poppins } from "./fonts";
 import Chart from "@/components/chart";
 import Development from "@/components/development";
@@ -12,7 +13,73 @@ const feedback = [
   "Bandit typer is really important since we rely so heavily on technology and typing, and mobility issues devastate someone's ability to type.", 
 ]
 
+interface Contribution {
+  name: string;
+  contributions: string[];
+  color: string;
+}
+
+const contributions : Contribution[] = [
+  {
+    name: "Victoria Chen",
+    contributions: [
+      "User study design and execution",
+      "Input page development",
+      "Start page design on Figma",
+      "Acted and edited the demo video",
+      "Presentation"
+    ],
+    color: "#428955",
+  },
+  {
+    name: "Brigham Pettit",
+    contributions: [
+      "User study design and execution",
+      "Keyboard layout generation algorithm development",
+      "Output page design on Figma",
+      "Acted in the demo video",
+      "Presentation",
+    ],
+    color: "#b6d167",
+  },
+  {
+    name: "Casey Pei",
+    contributions: [
+      "User study design and execution",
+      "Output keyboard page and development",
+      "Designed and created keyboard component",
+      "Added page connections and redesigned initial designs on Figma",
+      "Developed Milestone 4 page",
+      "Presentation",
+    ],
+    color: "#fffea8",
+  },
+  {
+    name: "Victoria Chiang",
+    contributions: [
+      "User study design and execution",
+      "Start page design and development",
+      "Upload file page design on Figma",
+      "Presentation",
+    ],
+    color: "#56793c",
+  },
+  {
+    name: "Patralika Ghosh",
+    contributions: [
+      "User study design and execution",
+      "Heatmap generation page design and development",
+      "Heatmap design page on Figma",
+      "Presentation",
+    ],
+    color: "#e9ffd9",
+  },
+]
+
 export default function Home() {
+
+  const [contributor, setContributor] = useState("Victoria Chen");
+
   return (
     <main className="flex min-h-screen flex-col items-center gap-16 bg-lightGreen overflow-hidden pb-36">
       <div className="flex flex-col w-full">
@@ -60,9 +127,44 @@ export default function Home() {
         
       </div>
 
-      <div className="flex flex-col items-center gap-4 p-24">
+      <div className="flex flex-col items-center gap-4 p-24 pb-30">
         <h2 className="text-xl sm:text-3xl font-bold" style={poppins.style}>Development Process</h2>
         <Development/>
+
+        <h2 className="text-xl sm:text-3xl font-bold mt-16" style={poppins.style}>Individual Contributions</h2>
+        <div className="flex gap-8 items-center">
+          <div className="flex flex-col items-end">
+            {contributions.map((c, i) => (
+              <button key={i} className={`text-firGreen hover:text-black hover:translate-x-[-5px] duration-200 ${contributor === c.name ? 'font-bold' : ''}`} onClick={() => setContributor(c.name)} >
+                {c.name}
+              </button>
+            ))}
+          </div>
+          <div className="flex-grow w-[54vw] h-[26vh]">
+            {contributions.map((c, i) => (
+              (contributor == c.name) &&
+              (<div key={i} className="w-full h-full bg-[#aad2aa] rounded-xl px-8 py-6 flex gap-6 ">
+                <div className="w-[50px] h-[50px] rounded-[50%] border-[1px] border-firGreen overflow-hidden" style={{"background": c.color}}>
+                  <Image
+                    src="/contributor.png"
+                    alt=""
+                    width={70}
+                    height={70}
+                    className=""
+                  ></Image>
+                </div>
+                <div className="">
+                  <p className="font-bold">{c.name}</p>
+                  <ul className="list-disc text-sm ml-4">
+                    {c.contributions.map((con, i) => (
+                      <li key={i}>{con}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>)
+            ))}
+          </div>
+        </div>
       </div>
 
       <div className="bg-[#7ea77d] w-full p-8 flex justify-center">
